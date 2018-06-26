@@ -44,7 +44,43 @@ class TodoList
   end
 
   # rest of class needs implementation
+  def add(todo)
+  end
+  
+  def size
+  end
+  
+  def first
+  end
+  
+  def last
+  end
+  
+  def item_at(index)
+    
+  end
 
+  def mark_done_at(index)
+    
+  end
+
+  def mark_undone_at(index)
+    
+  end
+
+  def remove_at(index)
+    
+  end
+  
+  def shift
+  end
+  
+  def pop
+  end
+  
+  def to_s
+  end
+  
 end
 
 # given
@@ -84,7 +120,14 @@ list.last                       # returns todo3, which is the last item in the l
 # ---- Retrieving an item in the list ----
 
 # item_at
-list.item_at                    # raises ArgumentError
+begin
+  list.item_at                  # raises ArgumentError
+  puts false
+rescue ArgumentError => e
+  puts "#{e.message}"
+  puts true
+end
+
 list.item_at(1)                 # returns 2nd item in list (zero based index)
 begin
   list.item_at(100)             # raises IndexError
@@ -98,7 +141,14 @@ end
 # ---- Marking items in the list -----
 
 # mark_done_at
-list.mark_done_at               # raises ArgumentError
+begin
+  list.mark_done_at             # raises ArgumentError
+  puts false
+rescue ArgumentError => e
+  puts "#{e.message}"
+  puts true
+end
+
 list.mark_done_at(1)            # marks the 2nd item as done
 begin
   list.mark_done_at(100)        # raises IndexError
@@ -109,7 +159,14 @@ rescue IndexError => e
 end
 
 # mark_undone_at
-list.mark_undone_at             # raises ArgumentError
+begin
+  list.mark_undone_at            # raises ArgumentError
+  puts false
+rescue ArgumentError => e
+  puts "#{e.message}"
+  puts true
+end
+
 list.mark_undone_at(1)          # marks the 2nd item as not done,
 begin
   list.mark_undone_at(100)      # raises IndexError
