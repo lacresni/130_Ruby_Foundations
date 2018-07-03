@@ -1,10 +1,8 @@
 class Tree
   include Enumerable
 
-  def each
-  end
+  def each; end
 
   # If Enumerable#max, #min, or #sort is used
-  def <=>(other)
-  end
+  def <=>(other); end
 end

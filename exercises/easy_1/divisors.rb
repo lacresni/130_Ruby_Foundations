@@ -21,7 +21,7 @@ p divisors(98) == [1, 2, 7, 14, 49, 98]
 def divisors_opt(num)
   result = []
   counter = 1
-  while counter <= Math::sqrt(num)
+  while counter <= Math.sqrt(num)
     if divisor?(num, counter)
       result << counter
       other_divisor = num / counter
