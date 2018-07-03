@@ -1,6 +1,6 @@
 def count(collection)
   collection.reduce(0) do |nb, item|
-    nb = yield(item) ? nb + 1 : nb
+    yield(item) ? nb + 1 : nb
   end
 end
 
