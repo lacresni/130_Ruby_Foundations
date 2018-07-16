@@ -4,14 +4,14 @@ class Series
   end
 
   def slices(size)
-    raise ArgumentError if size > @serie.size
+    raise ArgumentError, 'Requested size too long' if size > @serie.size
 
-    (0..(@serie.size - size)).to_a.each_with_object([]) do |index, result|
-      inner_arr = []
-      size.times do |inner_index|
-        inner_arr << @serie[index + inner_index]
-      end
-      result << inner_arr
+    index_list = 0.upto(@serie.size - size).to_a
+    index_list.each_with_object([]) do |index, result|
+      result << @serie[index, size] # use Array#slice method
     end
+
+    # Most concise solution using Enumerable#each_cons method
+    # @serie.each_cons(size).to_a
   end
 end
