@@ -14,15 +14,14 @@ class Anagram
     @word = word.downcase
   end
 
-  def match(candidates)
-    candidates.select { |candidate| anagram?(candidate.downcase) }
+  def match(words)
+    words.select { |word| anagram?(word) }
   end
 
   private
 
-  def anagram?(candidate)
-    candidate.size == @word.size &&
-      candidate != @word &&
-      candidate.chars.sort == @word.chars.sort
+  def anagram?(word)
+    word.downcase.chars.sort == @word.chars.sort &&
+      word.downcase != @word
   end
 end
