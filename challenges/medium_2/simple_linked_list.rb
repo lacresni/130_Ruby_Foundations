@@ -13,9 +13,7 @@ class Element
 end
 
 class SimpleLinkedList
-  def initialize
-    @list = []
-  end
+  attr_reader :head
 
   def self.from_a(arr)
     linked_list = SimpleLinkedList.new
@@ -23,42 +21,45 @@ class SimpleLinkedList
     linked_list
   end
 
-  def size
-    @list.size
-  end
-
   def empty?
-    @list.empty?
-  end
-
-  def head
-    @list[0]
-  end
-
-  def peek
-    return nil if empty?
-
-    element = head
-    element.datum
-  end
-
-  def push(value)
-    element = Element.new(value, head)
-    @list.unshift(element)
-  end
-
-  def pop
-    element = @list.shift
-    element.datum
+    @head.nil?
   end
 
   def to_a
-    @list.each_with_object([]) { |element, arr| arr.push(element.datum) }
+    return [] if empty?
+
+    arr = []
+    element = @head
+    loop do
+      arr.push(element.datum)
+      break if element.next.nil?
+
+      element = element.next
+    end
+    arr
+  end
+
+  def size
+    to_a.size
+  end
+
+  def push(value)
+    @head = Element.new(value, head)
+  end
+
+  def pop
+    element = @head
+    @head = @head.next
+    element.datum
+  end
+
+  def peek
+    head&.datum
   end
 
   def reverse
     linked_list = SimpleLinkedList.new
-    @list&.each { |element| linked_list.push(element.datum) }
+    to_a.each { |value| linked_list.push(value) }
     linked_list
   end
 end
