@@ -8,7 +8,7 @@ class Element
   end
 
   def tail?
-    true
+    @next.nil?
   end
 end
 
